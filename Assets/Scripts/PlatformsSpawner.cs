@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,6 +10,7 @@ public class PlatformsSpawner : MonoBehaviour
     [SerializeField] private int _platformsAmount;
 
     private GameObject[] _platforms;
+    private int index = 0;
 
     private void Start()
     {
@@ -18,7 +20,10 @@ public class PlatformsSpawner : MonoBehaviour
     private void Update()
     {
         if (_currentPlatform.position.x >= 0)
+        {
             SpawnPlatform();
+            index++;
+        }
     }
 
     private void PoolerPlatforms()
@@ -35,44 +40,31 @@ public class PlatformsSpawner : MonoBehaviour
     }
 
     private void SpawnPlatform()
-    { 
-        //GameObject temp;
-       // Последнюю слева платформу и переместить ее крайнее правое положение справа
-            _platforms[0].transform.position =
-                new Vector3(
-                    _platforms[^1].transform.position.x -
-                    _platforms[^1].transform.localScale.x, 0, 0);
-          
-         
-           _platforms[0] = _platforms[1];
+    {
+        var rightPlatform = _platforms[^1];
+        var leftPlatform = _platforms[0];
+        var nextPosition = new Vector3(
+            rightPlatform.transform.position.x -
+            rightPlatform.transform.localScale.x, 0, 0);
 
-        var temp = _platforms[0];
-        _platforms[0] = _platforms[^1];
-        _platforms[^1] = temp;
-        _currentPlatform = temp.transform;
+
+        if (index == _platformsAmount)
+        {
+            index = 0;
+            leftPlatform = _platforms[index];
+        }
+
+        rightPlatform = leftPlatform;
+        leftPlatform.transform.position =
+            nextPosition;
+        _currentPlatform = rightPlatform.transform;
+
+        if (_currentPlatform.position.x >= 0)
+        {
+            leftPlatform = _platforms[index];
+            _currentPlatform = leftPlatform.transform;
+            leftPlatform.transform.position =
+                new Vector3(_currentPlatform.transform.position.x - _currentPlatform.transform.localScale.x, 0, 0);
+        }
     }
 }
-//     //_platforms[1].transform.position = new Vector3(_currentPlatform.position.x,0,0);
-// Array.ForEach(_platforms,PlatformCount);
-//Debug.Break();
-
-// private void PlatformCount(GameObject obj)
-// {
-//     for (int i = 0; i < _platforms.Length; i++)
-//     {
-//     _platforms[i].transform.position = new Vector3(-_currentPlatform.localScale.x+2,0,0);
-//     _currentPlatform = _platforms[i].transform;
-//         
-//     }
-// }
-
-
-// private void SpawnPlatform()
-// {
-//     GameObject newPlatform = Instantiate(_platformPrefab,
-//         new Vector3(_currentPlatform.position.x - _currentPlatform.localScale.x, _currentPlatform.position.y,
-//             _currentPlatform.position.z), _currentPlatform.rotation);
-//     _currentPlatform = newPlatform.transform;
-//     Debug.Log("Spawn");
-//     //Debug.Break();
-// }
