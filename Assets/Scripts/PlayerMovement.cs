@@ -68,11 +68,7 @@ public class PlayerMovement : MonoBehaviour
                 Die();
         }
 
-        if (((1 << coll.gameObject.layer) & _coinLayers) != 0)
-        {
-            _coinsAmount++;
-            coll.gameObject.SetActive(false);
-        }
+        
     }
 
     public void Jump(InputAction.CallbackContext context)

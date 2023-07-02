@@ -6,7 +6,8 @@ public class CoinsSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private Transform[] _spawnCoinsPoints;
-
+    [SerializeField] private Transform _platform;
+    
     private int _coinsAmount;
     private GameObject[] _coins;
     private Random rnd = new Random();
@@ -28,8 +29,10 @@ public class CoinsSpawner : MonoBehaviour
             Vector3 spawnPosition = _spawnCoinsPoints[randomPointIndex].position;
             spawnPosition.x += i * _coinsStep;
             GameObject newCoins = Instantiate(_coinPrefab, spawnPosition, Quaternion.identity);
+            newCoins.transform.SetParent(_platform);
             _coins[i] = newCoins;
         }
+        
     }
 
     private void CoinSpawner()

@@ -264,7 +264,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -472,7 +472,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -586,7 +586,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -704,7 +704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &983707074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,6 +722,7 @@ MonoBehaviour:
   - {fileID: 1676851207}
   - {fileID: 1096436802}
   - {fileID: 173197802}
+  _platform: {fileID: 1750939903}
 --- !u!4 &983707075
 Transform:
   m_ObjectHideFlags: 0
@@ -802,7 +803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentPlatform: {fileID: 1750939903}
   _platformPrefab: {fileID: 1750939899}
-  _platformsAmount: 5
+  _platformsAmount: 3
 --- !u!4 &1105963920
 Transform:
   m_ObjectHideFlags: 0
@@ -928,7 +929,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -947,7 +948,7 @@ GameObject:
   - component: {fileID: 1434895234}
   - component: {fileID: 1434895236}
   - component: {fileID: 1434895237}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
