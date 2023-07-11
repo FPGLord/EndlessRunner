@@ -1,14 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 
 public class Coins : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+   private void OnTriggerEnter(Collider coll)
     {
+        PlayerMovement.coinsAmount++;
         gameObject.SetActive(false);
     }
-
-
 }

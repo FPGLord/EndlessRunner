@@ -263,8 +263,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -471,8 +471,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -585,8 +585,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -723,6 +723,7 @@ MonoBehaviour:
   - {fileID: 1096436802}
   - {fileID: 173197802}
   _platform: {fileID: 1750939903}
+  _coinsAmount: 10
 --- !u!4 &983707075
 Transform:
   m_ObjectHideFlags: 0
@@ -803,7 +804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentPlatform: {fileID: 1750939903}
   _platformPrefab: {fileID: 1750939899}
-  _platformsAmount: 3
+  _platformsAmount: 2
 --- !u!4 &1105963920
 Transform:
   m_ObjectHideFlags: 0
@@ -928,8 +929,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -1040,9 +1041,6 @@ MonoBehaviour:
   _obstacleLayers:
     serializedVersion: 2
     m_Bits: 8
-  _coinLayers:
-    serializedVersion: 2
-    m_Bits: 64
   _lives: 3
 --- !u!114 &1434895235
 MonoBehaviour:

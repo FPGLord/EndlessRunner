@@ -8,7 +8,7 @@ public class PlatformsSpawner : MonoBehaviour
     [SerializeField] private Transform _currentPlatform;
     [SerializeField] private GameObject _platformPrefab;
     [SerializeField] private int _platformsAmount;
-
+    private CoinsSpawner CoinsSpawner;
     private GameObject[] _platforms;
     private int index = 0;
 
@@ -23,6 +23,7 @@ public class PlatformsSpawner : MonoBehaviour
         {
             SpawnPlatform();
             index++;
+            CoinsSpawner.SpawnCoins();
         }
     }
 
@@ -37,6 +38,7 @@ public class PlatformsSpawner : MonoBehaviour
             _currentPlatform = newPlatform.transform;
             _platforms[i] = newPlatform;
         }
+        
     }
 
     private void SpawnPlatform()
@@ -66,5 +68,7 @@ public class PlatformsSpawner : MonoBehaviour
             leftPlatform.transform.position =
                 new Vector3(_currentPlatform.transform.position.x - _currentPlatform.transform.localScale.x, 0, 0);
         }
+
+        CoinsSpawner = _currentPlatform.GetComponentInChildren<CoinsSpawner>();
     }
 }

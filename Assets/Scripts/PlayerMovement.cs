@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 
-
 public class PlayerMovement : MonoBehaviour
 {
     //[SerializeField] private float _force = -1.85f;
@@ -12,12 +11,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpForce = 2;
     [SerializeField] private LayerMask _groundLayers;
     [SerializeField] private LayerMask _obstacleLayers;
-    [SerializeField] private LayerMask _coinLayers;
+//    [SerializeField] private LayerMask _coinLayers;
     [SerializeField] private int _lives = 3;
+   
+    public static int coinsAmount; //переменная для хранения кол-ва собираемых монет.
 
     float _inputMove;
     private Rigidbody _rb;
-    private int _coinsAmount;
 
     public IEnumerator JumpCoroutine()
     {
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator NewLevelCoroutine()
     {
-       Time.timeScale = 0;
+        Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(3);
         Time.timeScale = 1;
         Debug.Log("Time");
@@ -63,12 +63,10 @@ public class PlayerMovement : MonoBehaviour
         if (((1 << coll.gameObject.layer) & _obstacleLayers) != 0)
         {
             transform.Translate(2, 0, 0);
-            _lives --;
+            _lives--;
             if (_lives == 0)
                 Die();
         }
-
-        
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -80,6 +78,6 @@ public class PlayerMovement : MonoBehaviour
     private void Die()
     {
         SceneManager.LoadScene(0);
-       // StartCoroutine(NewLevelCoroutine());
+        // StartCoroutine(NewLevelCoroutine());
     }
 }
