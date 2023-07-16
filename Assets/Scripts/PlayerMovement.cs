@@ -34,11 +34,7 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = 1;
         Debug.Log("Time");
     }
-
-    private void Start()
-    {
-        _rb = GetComponent<Rigidbody>();
-    }
+   
 
     private void Update()
     {
