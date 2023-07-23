@@ -1,12 +1,13 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
 public class Coins : MonoBehaviour
 {
-   private void OnTriggerEnter(Collider coll)
+    private int _coinsAmount; //переменная для хранения кол-ва собираемых монет.
+
+    private void OnTriggerEnter(Collider coll)
     {
-        PlayerMovement.coinsAmount++;
+       _coinsAmount++;
         gameObject.SetActive(false);
     }
 }
