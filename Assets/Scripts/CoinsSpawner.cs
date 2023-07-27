@@ -8,43 +8,44 @@ public class CoinsSpawner : MonoBehaviour
     [SerializeField] private Transform[] _spawnCoinsPoints;
     [SerializeField] private Transform _platform;
     [SerializeField] private int _coinsAmount; // Общее количество монет для спавна
-    
+
     private GameObject[] _coins;
     private Random _rnd = new Random();
     private int _coinsStep = 2;
-   
+    private Vector3 _spawnCoinsPosition;
+
 
     private void Start()
     {
         CreateCoins();
-        SpawnCoins();
     }
+
     private void CreateCoins()
     {
         _coins = new GameObject[_coinsAmount];
-
         for (int i = 0; i < _coinsAmount; i++)
         {
             GameObject newCoins = Instantiate(_coinPrefab);
             newCoins.transform.SetParent(_platform);
-            newCoins.SetActive(false);
             _coins[i] = newCoins;
+            newCoins.SetActive(false);
         }
     }
 
     public void SpawnCoins()
     {
-        int amountCoins = _rnd.Next(_coinsAmount);
-            //_coins = new GameObject[_coinsAmount];
-        for (int i = 0; i < amountCoins; i++)
+        if (_coins == null)
+            CreateCoins();
+
+        int randomPointIndex = _rnd.Next(0, 3);
+        Vector3 _spawnCoinsPosition = _spawnCoinsPoints[randomPointIndex].position;
+
+        foreach (var coins in _coins)
         {
-            _coins[i].SetActive(true);
-            int randomPointIndex = _rnd.Next(0, 3);
-            Vector3 spawnPosition = _spawnCoinsPoints[randomPointIndex].position;
-            spawnPosition.x += i * _coinsStep;
-            GameObject newCoins = Instantiate(_coins[i], spawnPosition, Quaternion.identity);
-            newCoins.transform.SetParent(_platform);
-            _coins[i] = newCoins;
+            _spawnCoinsPosition.x += _coinsStep;
+            coins.transform.position = new Vector3(_spawnCoinsPosition.x, 1, _spawnCoinsPosition.z);
+            coins.transform.SetParent(_platform);
+            coins.SetActive(true);
         }
     }
 }

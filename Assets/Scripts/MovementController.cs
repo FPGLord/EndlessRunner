@@ -19,8 +19,6 @@ public class MovementController : MonoBehaviour
         transform.Translate(0, -_jumpForce, 0);
     }
 
-  
-
     public void Move(InputAction.CallbackContext key)
     {
         //Debug.Log("Move " + key.ReadValue<float>());
@@ -38,3 +36,4 @@ public class MovementController : MonoBehaviour
             StartCoroutine(JumpCoroutine());
     }
 }
+

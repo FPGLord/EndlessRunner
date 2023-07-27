@@ -1,9 +1,23 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions;
+
 
 public class Platform : MonoBehaviour
 {
-    public void Move(Vector2 moveDelta)
+    [SerializeField] private CoinsSpawner _coinsSpawner;
+    public float positionX => transform.position.x;
+    public float length => transform.localScale.x;
+    
+    public void Move(Vector2 direction, float moveDelta)
     {
-       transform.Translate(moveDelta);
+        Assert.IsTrue(direction == direction.normalized, $"Vector is not normalized {direction} ");
+        transform.Translate(direction * moveDelta);
     }
+
+    public void Initialize()
+    {
+        _coinsSpawner.SpawnCoins();
+    }
+    
 }
