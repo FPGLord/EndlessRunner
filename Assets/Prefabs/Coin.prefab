@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8741419671383072220}
   - component: {fileID: 8741419671383072221}
   - component: {fileID: 8741419671383072218}
-  - component: {fileID: 1468007359655460294}
+  - component: {fileID: 7686593601822178110}
   m_Layer: 6
   m_Name: Coin
   m_TagString: Untagged
@@ -98,7 +98,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1468007359655460294
+--- !u!114 &7686593601822178110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,6 +107,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 8741419671383072219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04a8792ab73de43489a626fa11380adb, type: 3}
+  m_Script: {fileID: 11500000, guid: 021bacf018f342145baa48f0294923c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8741419671383072219}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 774b2282914a37346bfd2b39cfbc1279, type: 2}
+        m_TargetAssemblyTypeName: CoinsCounter, Assembly-CSharp
+        m_MethodName: AddCoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

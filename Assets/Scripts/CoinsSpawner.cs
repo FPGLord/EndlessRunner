@@ -13,6 +13,7 @@ public class CoinsSpawner : MonoBehaviour
     private Random _rnd = new Random();
     private int _coinsStep = 2;
     private Vector3 _spawnCoinsPosition;
+    private int heightAbovePlatform = 1;
 
 
     private void Start()
@@ -43,7 +44,7 @@ public class CoinsSpawner : MonoBehaviour
         foreach (var coins in _coins)
         {
             _spawnCoinsPosition.x += _coinsStep;
-            coins.transform.position = new Vector3(_spawnCoinsPosition.x, 1, _spawnCoinsPosition.z);
+            coins.transform.position = new Vector3(_spawnCoinsPosition.x, heightAbovePlatform, _spawnCoinsPosition.z);
             coins.transform.SetParent(_platform);
             coins.SetActive(true);
         }

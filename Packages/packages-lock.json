@@ -144,6 +144,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "www.nulltale.socreator": {
+      "version": "https://github.com/NullTale/SoCreator.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "19674bf7ab07b217575f3caa7a43dc94ef8f4810"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

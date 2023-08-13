@@ -360,6 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4514ba76bccddeb4e8b64f9d09196e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coinsSpawner: {fileID: 0}
 --- !u!114 &1408263079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +376,7 @@ MonoBehaviour:
   _platformPrefab: {fileID: 140707902469362816, guid: e7514aa7ae70c59479ade2e1be088ef4, type: 3}
   _platformsAmount: 3
   _moveSpeed: 10
+  _conveyerVariable: {fileID: 11400000, guid: e463babe802cc6149a5a31d7e4df7b73, type: 2}
 --- !u!1 &1434895229
 GameObject:
   m_ObjectHideFlags: 0
