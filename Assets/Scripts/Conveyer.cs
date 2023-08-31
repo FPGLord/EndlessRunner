@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Conveyer : MonoBehaviour
 {
-    // [SerializeField] private Transform _currentPlatform;
     [SerializeField] private Platform _platformPrefab;
     [SerializeField] private int _platformsAmount;
     [SerializeField] private float _moveSpeed;

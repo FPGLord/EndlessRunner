@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1792280070702009900
 Transform:
   m_ObjectHideFlags: 0
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 7732941779871483075}
   - component: {fileID: 7732941779871483708}
   - component: {fileID: 1323310236517022114}
-  - component: {fileID: 7014747619805795215}
+  - component: {fileID: 593529902446397842}
   m_Layer: 3
   m_Name: Obstacle (2)
   m_TagString: Untagged
@@ -892,7 +892,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7014747619805795215
+--- !u!114 &593529902446397842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -904,6 +904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e6520710b4c18409ad37f117b7f3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
 --- !u!1 &7965685132761884619
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1821598983204860829
 Transform:
   m_ObjectHideFlags: 0
