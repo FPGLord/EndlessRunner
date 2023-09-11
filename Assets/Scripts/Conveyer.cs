@@ -6,6 +6,7 @@ public class Conveyer : MonoBehaviour
     [SerializeField] private int _platformsAmount;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private ConveyerVariable _conveyerVariable;
+    private SpeedUpBox _speedUpBox;
     private Platform[] _platforms;
 
     private int _backMoveDelta = 4;
@@ -61,15 +62,16 @@ public class Conveyer : MonoBehaviour
             platform.Move(Vector2.left, _backMoveDelta);
         }
     }
-    //REVIEW не работают методы
+
     public void SpeedUp()
     {
-        _moveSpeed += 2;
-        Debug.Log($"Speed = {_moveSpeed}");
+        _moveSpeed += 10;
+            //  _speedUpBox.Disable();
     }
 
     public void SpeedDown()
     {
-        _moveSpeed -= 2;
+        if (_moveSpeed > 10)
+            _moveSpeed -= 10;
     }
 }

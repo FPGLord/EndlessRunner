@@ -13,7 +13,11 @@ public class CoinsCounter : ScriptableObject
         _coinsAmount++;
         onValueChange?.Invoke();
     }
-    
+
+    public void Reset()
+    {
+        _coinsAmount = 0;
+    }
     
     
 }
