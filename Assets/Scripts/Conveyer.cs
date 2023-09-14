@@ -6,11 +6,12 @@ public class Conveyer : MonoBehaviour
     [SerializeField] private int _platformsAmount;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private ConveyerVariable _conveyerVariable;
-    private SpeedUpBox _speedUpBox;
+    [SerializeField]private SpeedBoxes _speedBoxes;
     private Platform[] _platforms;
 
     private int _backMoveDelta = 4;
-    int platformsSpawnPositionX = 40;
+    int _platformsSpawnPositionX = 40;
+    private int _speedChangeValue = 10;
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class Conveyer : MonoBehaviour
         {
             platform.Move(Vector2.right, _moveSpeed * Time.deltaTime);
 
-            if (platform.positionX >= platformsSpawnPositionX)
+            if (platform.positionX >= _platformsSpawnPositionX)
 
                 ShiftPlatform(platform);
         }
@@ -53,6 +54,7 @@ public class Conveyer : MonoBehaviour
         float conveyerLength = platform.length * _platformsAmount;
         platform.Move(Vector2.left, conveyerLength);
         platform.Initialize();
+//        _speedBoxes.CreateBoxes();
     }
 
     public void MoveBack()
@@ -65,13 +67,12 @@ public class Conveyer : MonoBehaviour
 
     public void SpeedUp()
     {
-        _moveSpeed += 10;
-            //  _speedUpBox.Disable();
+        _moveSpeed += _speedChangeValue;
     }
 
     public void SpeedDown()
     {
-        if (_moveSpeed > 10)
-            _moveSpeed -= 10;
+        if (_moveSpeed > _speedChangeValue)
+            _moveSpeed -= _speedChangeValue;
     }
 }

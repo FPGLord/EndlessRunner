@@ -917,7 +917,6 @@ GameObject:
   - component: {fileID: 1204482028135323376}
   - component: {fileID: 6020575798548307523}
   - component: {fileID: 9090469364890640923}
-  - component: {fileID: 873302676021727428}
   m_Layer: 3
   m_Name: SpeedUpBox
   m_TagString: Untagged
@@ -1046,15 +1045,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &873302676021727428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8683658855628519399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76601e0ea2ea79b4a972e8dbadd20dee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

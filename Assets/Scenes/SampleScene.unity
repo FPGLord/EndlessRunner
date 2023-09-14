@@ -699,6 +699,7 @@ MonoBehaviour:
   _platformsAmount: 3
   _moveSpeed: 10
   _conveyerVariable: {fileID: 11400000, guid: e463babe802cc6149a5a31d7e4df7b73, type: 2}
+  _speedBoxes: {fileID: 11400000, guid: fd01ad2baf73dbb4c84a2f069502ed27, type: 2}
 --- !u!1 &1885616621
 GameObject:
   m_ObjectHideFlags: 0
