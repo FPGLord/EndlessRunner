@@ -4,15 +4,9 @@ using UnityEngine.Events;
 
 public class DamageReciever : ScriptableObject
 {
-    //[SerializeField]private Player _player;
     [SerializeField] private UnityEvent onDeath;
     private int _lives = 3;
     
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     TakeLives();
-    // }
-
     public void RecieveDamage()
     {
         _lives--;
