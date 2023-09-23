@@ -27,22 +27,3 @@ public class BoxesSpawner : MonoBehaviour
         }
     }
 }
-
-
-// List<int> usedPointIndexes = new();
-// int randomPointIndex = 0;
-
-//  foreach (var box in _boxes)
-// {
-//     // do
-//     // {
-//     //     randomPointIndex = Random.Range(0, _spawnPoints.Length);
-//     // } 
-//     // while (usedPointIndexes.Contains(randomPointIndex));
-//    
-//     
-//     Vector3 _spawnPointPosition = _spawnPoints[randomPointIndex].position;
-//     box.transform.position = _spawnPointPosition;
-//     box.SetActive(true);
-//     usedPointIndexes.Add(randomPointIndex);
-// }
