@@ -294,12 +294,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76601e0ea2ea79b4a972e8dbadd20dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platform: {fileID: 7732941779465193923}
   _spawnPoints:
   - {fileID: 8294177881153556859}
   - {fileID: 6611981425083837593}
   - {fileID: 8933964739534488794}
-  _boxes:
+  _boxPrefabs:
   - {fileID: 8683658855628519399}
   - {fileID: 1647316063631637427}
 --- !u!1 &7732941778146548989
