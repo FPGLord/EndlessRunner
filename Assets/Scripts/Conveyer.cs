@@ -1,27 +1,33 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Conveyer : MonoBehaviour
 {
     [SerializeField] private Platform _platformPrefab;
     [SerializeField] private int _platformsAmount;
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private ConveyerVariable _conveyerVariable;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private UnityEvent _OnCollisionObstacle;
+    [SerializeField] private UnityEvent _OnDeathInvoke;
+    [SerializeField] private int _platformValueToSpawnBox;
+    
+    
     private Platform[] _platforms;
-
-
-    private int _backMoveDelta = 4;
-    int _platformsSpawnPositionX = 40;
+    private float _animationSpeed = 0.5f;
+    private int _backMoveDelta = 9;
+    private int _platformsSpawnPositionX = 40;
     private int _speedChangeValue = 10;
+    private int _countShiftPlatforms;
 
     private void Start()
     {
-        _conveyerVariable.Set(this);
         CreatePlatforms();
     }
 
     private void Update()
     {
         MovePlatforms();
+        SpawnBoxes();
     }
 
     private void MovePlatforms()
@@ -33,6 +39,16 @@ public class Conveyer : MonoBehaviour
             if (platform.positionX >= _platformsSpawnPositionX)
 
                 ShiftPlatform(platform);
+        }
+    }
+
+    void SpawnBoxes()
+    {
+        if (_countShiftPlatforms == _platformValueToSpawnBox)
+        {
+            for (int i = 0; i < _platforms.Length; i++)
+                _platforms[^1].InitializeBoxes();
+            _countShiftPlatforms = 0;
         }
     }
 
@@ -54,6 +70,7 @@ public class Conveyer : MonoBehaviour
         float conveyerLength = platform.length * _platformsAmount;
         platform.Move(Vector2.left, conveyerLength);
         platform.Initialize();
+        _countShiftPlatforms++;
     }
 
     public void MoveBack()
@@ -61,17 +78,28 @@ public class Conveyer : MonoBehaviour
         foreach (var platform in _platforms)
         {
             platform.Move(Vector2.left, _backMoveDelta);
+            _OnCollisionObstacle.Invoke();
         }
     }
 
     public void SpeedUp()
     {
         _moveSpeed += _speedChangeValue;
+        _animator.speed += _animationSpeed;
     }
 
     public void SpeedDown()
     {
         if (_moveSpeed > _speedChangeValue)
+        {
             _moveSpeed -= _speedChangeValue;
+            _animator.speed -= _animationSpeed;
+        }
+    }
+
+    public void ConveyerStop()
+    {
+        _OnDeathInvoke.Invoke();
+        _moveSpeed = 0;
     }
 }

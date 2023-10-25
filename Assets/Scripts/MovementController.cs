@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
@@ -7,9 +8,10 @@ public class MovementController : MonoBehaviour
     [SerializeField] private int _step = 2;
     [SerializeField] private float _jumpForce = 2;
     [SerializeField] private LayerMask _groundLayers;
+    [SerializeField] private UnityEvent _OnJump;
+    private Player _player;
 
     float _inputMove;
-    //private Rigidbody _rb;
 
     public IEnumerator JumpCoroutine()
     {
@@ -30,10 +32,14 @@ public class MovementController : MonoBehaviour
             transform.Translate(0, 0, -_step);
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    public void Jump()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, 1.47f, _groundLayers))
-            StartCoroutine(JumpCoroutine());
+        bool isOnGround = Physics.Raycast(transform.position, Vector3.down, 1.47f, _groundLayers);
+
+        if (!isOnGround)
+            return;
+
+        StartCoroutine(JumpCoroutine());
+        _OnJump.Invoke();
     }
 }
-

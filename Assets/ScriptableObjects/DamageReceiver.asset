@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e6520710b4c18409ad37f117b7f3c7, type: 3}
   m_Name: DamageReceiver
   m_EditorClassIdentifier: 
-  onDeath:
+  _OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 7b3b45b0aaf79a844869ebc75f01fc3c, type: 2}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 3
+      - m_Target: {fileID: 11400000, guid: cbcdea1a19e55d2429c8ea42cecb3454, type: 2}
+        m_TargetAssemblyTypeName: EventVariable, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

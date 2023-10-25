@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 public class BoxesSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private GameObject[] _boxPrefabs;
+    [SerializeField] private PowerUpBoxView[] _boxPrefabs;
 
     public void SpawnBoxes()
     {
@@ -13,17 +13,23 @@ public class BoxesSpawner : MonoBehaviour
         ShuffleSpawnPoints();
         for (int i = 0; i < _boxPrefabs.Length; i++)
         {
-            _boxPrefabs[i].transform.position = _spawnPoints[i].position;
-            _boxPrefabs[i].SetActive(true);
+            if (_boxPrefabs[i].spawnChance >= Random.Range(0f, 1f))
+            {
+                _boxPrefabs[i].transform.position = _spawnPoints[i].position;
+                _boxPrefabs[i].gameObject.SetActive(true);
+            }
         }
     }
 
     private void ShuffleSpawnPoints()
     {
-        for (int i = 0; i < _boxPrefabs.Length; i++)
-        {
-            int randomPointIndex = Random.Range(0, _spawnPoints.Length);
-            (_spawnPoints[i], _spawnPoints[randomPointIndex]) = (_spawnPoints[randomPointIndex], _spawnPoints[i]);
-        }
+        int randomPointIndex = Random.Range(0, _spawnPoints.Length);
+        (_spawnPoints[0], _spawnPoints[randomPointIndex]) = (_spawnPoints[randomPointIndex], _spawnPoints[0]);
+
+        //     // for (int i = 0; i < _boxPrefabs.Length; i++)
+        //     // {
+        //     int randomPointIndex = Random.Range(0, _spawnPoints.Length);
+        //     (_spawnPoints[i], _spawnPoints[randomPointIndex]) = (_spawnPoints[randomPointIndex], _spawnPoints[i]);
+        // }
     }
 }

@@ -20,6 +20,12 @@ public class Platform : MonoBehaviour
     public void Initialize()
     {
         _coinsSpawner.SpawnCoins();
+      //  _boxesSpawner.SpawnBoxes();
+    }
+
+    //ToDo спавн коробок
+    public void InitializeBoxes()
+    {
         _boxesSpawner.SpawnBoxes();
     }
 }
