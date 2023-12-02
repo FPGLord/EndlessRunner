@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,4 +10,6 @@ public class PowerUpBox : ScriptableObject
    public UnityEvent OnCollision => _OnCollision;
 
    public Material material => _material;
+
+   public float spawnChance => _spawnChance;
 }

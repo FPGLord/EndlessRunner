@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4829099763966971944}
   - component: {fileID: 1623510011288966257}
   - component: {fileID: 7415929551524732583}
-  - component: {fileID: 6555531571277450225}
+  - component: {fileID: -3873071005892427439}
   m_Layer: 3
-  m_Name: PowerBox
+  m_Name: PowerUpBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,9 +30,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3268024319249970678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.16, y: 1.0068452, z: 0.383}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.16, y: 1.0155, z: 0.383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6555531571277450225
+--- !u!114 &-3873071005892427439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,5 +156,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnChance: 0
-  _meshRenderer: {fileID: 0}
-  _collisionTrigger: {fileID: 0}
+  _meshRenderer: {fileID: 3594769829956174555}
+  _collisionTrigger: {fileID: 7415929551524732583}

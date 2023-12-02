@@ -1,34 +1,35 @@
-
 using UnityEngine;
 
 
-public class PowerUpBoxView : MonoBehaviour
+public class PowerUpBoxView : View<PowerUpBox>
 {
-   [SerializeField] private float _spawnChance;
-   [SerializeField] private MeshRenderer _meshRenderer;
-   [SerializeField] private CollisionTrigger _collisionTrigger;
-   
-  
-   
-   private PowerUpBox _data;
+    [SerializeField] private float _spawnChance;
+    [SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private CollisionTrigger _collisionTrigger;
 
-   public void ViewData(PowerUpBox data)
-   {
-       _data = data;
-       _meshRenderer.material = _data.material;
-       _collisionTrigger.OnTrigger.AddListener(InvokeOnCollision);
-   }
+    private PowerUpBox _data;
 
-   void InvokeOnCollision()
-   {
-     _data.OnCollision.Invoke();
-   }
+    public override void ViewData(PowerUpBox data)
+    {
+        _data = data;
+        _meshRenderer.material = _data.material;
+        _collisionTrigger.OnTrigger.AddListener(InvokeOnCollision);
+        _spawnChance = _data.spawnChance;
+    }
 
-   private void OnDisable()
-   {
-       _collisionTrigger.OnTrigger.RemoveListener(InvokeOnCollision);
-   }
+    void InvokeOnCollision()
+    {
+        _data.OnCollision.Invoke();
+    }
 
-   public float spawnChance => _spawnChance;
-   
+    private void OnDisable()
+    {
+        _collisionTrigger.OnTrigger.RemoveListener(InvokeOnCollision);
+    }
+
+    public override void Activate()
+    {
+        if (_spawnChance >= Random.Range(0f, 1f))
+            base.Activate();
+    }
 }

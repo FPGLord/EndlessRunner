@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpeedDownBox
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: a60f2205d05b67c43ba689d675207c3e, type: 2}
-  _spawnChance: 0.15
+  _spawnChance: 1
   _OnCollision:
     m_PersistentCalls:
       m_Calls:

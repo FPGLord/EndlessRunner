@@ -5,9 +5,8 @@ using UnityEngine.Assertions;
 public class Platform : MonoBehaviour
 {
     [SerializeField] private CoinsSpawner _coinsSpawner;
-    [SerializeField] private BoxesSpawner _boxesSpawner;
-
-
+    [SerializeField] private Spawner<PowerUpBox> _boxesSpawner;
+    
     public float positionX => transform.position.x;
     public float length => transform.localScale.x;
 
@@ -19,13 +18,13 @@ public class Platform : MonoBehaviour
 
     public void Initialize()
     {
+      
         _coinsSpawner.SpawnCoins();
-      //  _boxesSpawner.SpawnBoxes();
     }
-
-    //ToDo спавн коробок
+ 
     public void InitializeBoxes()
     {
-        _boxesSpawner.SpawnBoxes();
+        _boxesSpawner.Spawn();
     }
 }
+
