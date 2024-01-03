@@ -6,7 +6,9 @@ public class Platform : MonoBehaviour
 {
     [SerializeField] private CoinsSpawner _coinsSpawner;
     [SerializeField] private Spawner<PowerUpBox> _boxesSpawner;
-    
+    [SerializeField] private Spawner<Bin> _binsSpawner;
+
+
     public float positionX => transform.position.x;
     public float length => transform.localScale.x;
 
@@ -18,13 +20,8 @@ public class Platform : MonoBehaviour
 
     public void Initialize()
     {
-      
+        _binsSpawner.Spawn();
+        _boxesSpawner.Spawn();
         _coinsSpawner.SpawnCoins();
     }
- 
-    public void InitializeBoxes()
-    {
-        _boxesSpawner.Spawn();
-    }
 }
-

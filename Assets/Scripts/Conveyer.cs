@@ -9,15 +9,13 @@ public class Conveyer : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private UnityEvent _OnCollisionObstacle;
     [SerializeField] private UnityEvent _OnDeathInvoke;
-    [SerializeField] private int _platformValueToSpawnBox;
-    
-    
+
     private Platform[] _platforms;
     private float _animationSpeed = 0.5f;
     private int _backMoveDelta = 9;
     private int _platformsSpawnPositionX = 40;
     private int _speedChangeValue = 10;
-    private int _countShiftPlatforms;
+
 
     private void Start()
     {
@@ -27,7 +25,6 @@ public class Conveyer : MonoBehaviour
     private void Update()
     {
         MovePlatforms();
-        SpawnBoxes();
     }
 
     private void MovePlatforms()
@@ -42,27 +39,20 @@ public class Conveyer : MonoBehaviour
         }
     }
 
-    void SpawnBoxes()
-    {
-        if (_countShiftPlatforms == _platformValueToSpawnBox)
-        {
-            for (int i = 0; i < _platforms.Length; i++)
-                _platforms[^1].InitializeBoxes();
-            _countShiftPlatforms = 0;
-        }
-    }
-
     private void CreatePlatforms()
     {
         _platforms = new Platform[_platformsAmount];
+
         for (int i = 0; i < _platformsAmount; i++)
         {
-            Platform newPlatform = Instantiate(_platformPrefab,
-                new Vector3(_platformPrefab.positionX - _platformPrefab.length, 0, 0), Quaternion.identity);
-            _platformPrefab = newPlatform;
+            Platform newPlatform = Instantiate(_platformPrefab);
+            newPlatform.transform.position = new Vector3(_platformPrefab.positionX + i * _platformPrefab.length, 0, 0);
             _platforms[i] = newPlatform;
             _platforms[i].Initialize();
         }
+            // Platform newPlatform = Instantiate(_platformPrefab,
+            //     new Vector3(_platformPrefab.positionX - _platformPrefab.length, 0, 0), Quaternion.identity);
+            //_platformPrefab = newPlatform;
     }
 
     private void ShiftPlatform(Platform platform)
@@ -70,7 +60,6 @@ public class Conveyer : MonoBehaviour
         float conveyerLength = platform.length * _platformsAmount;
         platform.Move(Vector2.left, conveyerLength);
         platform.Initialize();
-        _countShiftPlatforms++;
     }
 
     public void MoveBack()

@@ -1,6 +1,4 @@
 using UnityEngine;
-using Random = System.Random;
-
 
 public class CoinsSpawner : MonoBehaviour
 {
@@ -10,11 +8,9 @@ public class CoinsSpawner : MonoBehaviour
     [SerializeField] private int _coinsAmount; // Общее количество монет для спавна
 
     private GameObject[] _coins;
-    private Random _rnd = new Random();
     private int _coinsStep = 2;
     private Vector3 _spawnCoinsPosition;
     private int heightAbovePlatform = 1;
-
 
     private void Start()
     {
@@ -38,7 +34,8 @@ public class CoinsSpawner : MonoBehaviour
         if (_coins == null)
             CreateCoins();
 
-        int randomPointIndex = _rnd.Next(0, 3);
+        int randomPointIndex = Random.Range(0,3); 
+           
         Vector3 _spawnCoinsPosition = _spawnCoinsPoints[randomPointIndex].position;
 
         foreach (var coins in _coins)

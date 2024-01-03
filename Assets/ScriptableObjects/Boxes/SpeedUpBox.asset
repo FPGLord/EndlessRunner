@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpeedUpBox
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 099f8ab5055c38e4fa9b02975140c339, type: 2}
-  _spawnChance: 1
+  _spawnChance: 0.13
   _OnCollision:
     m_PersistentCalls:
       m_Calls:

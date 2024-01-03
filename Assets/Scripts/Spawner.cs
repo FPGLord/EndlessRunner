@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Serialization;
-
 
 public class Spawner<TData> : MonoBehaviour
 {
@@ -10,9 +8,8 @@ public class Spawner<TData> : MonoBehaviour
     [SerializeField] private TData[] _data;
     [SerializeField] private View<TData> _viewPrefab;
 
-    
     private List<View<TData>> _spawnedViews = new();
-     
+
     public void Spawn()
     {
         foreach (var item in _spawnedViews)
@@ -22,13 +19,12 @@ public class Spawner<TData> : MonoBehaviour
         {
             if (_spawnedViews.Count <= i)
             {
-                View<TData> newPowerUpBoxView = Instantiate(_viewPrefab,transform);
-                newPowerUpBoxView.Activate();
+                View<TData> newPowerUpBoxView = Instantiate(_viewPrefab, transform);
                 _spawnedViews.Add(newPowerUpBoxView);
             }
             _spawnedViews[i].ViewData(_data[i]);
         }
-        
+
         Assert.IsTrue(_spawnedViews.Count <= _spawnPoints.Length,
             $" Коробок ({_spawnedViews.Count})  больше, чем поинтов ({_spawnPoints.Length}) ");
 
@@ -36,8 +32,8 @@ public class Spawner<TData> : MonoBehaviour
 
         for (int i = 0; i < _spawnedViews.Count; i++)
         {
-                _spawnedViews[i].transform.position = _spawnPoints[i].position;
-                _spawnedViews[i].Activate();
+            _spawnedViews[i].transform.position = _spawnPoints[i].position;
+            _spawnedViews[i].Activate();
         }
     }
 
