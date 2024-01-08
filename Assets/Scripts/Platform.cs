@@ -7,10 +7,11 @@ public class Platform : MonoBehaviour
     [SerializeField] private CoinsSpawner _coinsSpawner;
     [SerializeField] private Spawner<PowerUpBox> _boxesSpawner;
     [SerializeField] private Spawner<Bin> _binsSpawner;
-
+    [SerializeField] private Transform _visualTransform;
+    
 
     public float positionX => transform.position.x;
-    public float length => transform.localScale.x;
+    public float length => _visualTransform.localScale.x;
 
     public void Move(Vector2 direction, float moveDelta)
     {

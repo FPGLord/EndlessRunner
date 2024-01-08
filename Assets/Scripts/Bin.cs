@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class Bin : ScriptableObject
 {
-    [SerializeField] private Material _material;
+    [SerializeField] private Mesh _mesh;
+    [SerializeField] private float _spawnChance;
 
-    public Material material => _material;
+    public Mesh mesh => _mesh;
+    public float spawnchance => _spawnChance;
 }
