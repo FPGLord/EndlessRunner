@@ -6,7 +6,7 @@ public class Platform : MonoBehaviour
 {
     [SerializeField] private CoinsSpawner _coinsSpawner;
     [SerializeField] private Spawner<PowerUpBox> _boxesSpawner;
-    [SerializeField] private Spawner<Bin> _binsSpawner;
+    [SerializeField] private Spawner<GameObject> _binsSpawner;
     [SerializeField] private Transform _visualTransform;
     
 

@@ -1,20 +1,19 @@
 using UnityEngine;
 
-public class BinView : View<Bin>
+public class BinView : View<GameObject>
 {
-   
-   [SerializeField] private float _spawnChance;
-   [SerializeField] private MeshFilter _meshFilter;
-    
-    private Bin _data;
+    [SerializeField] private float _spawnChance;
+    private GameObject _data;
 
-  public override void ViewData(Bin data)
+    public override void ViewData(GameObject data)
     {
-        _data = data;
-        _meshFilter.mesh = _data.mesh;
-        _spawnChance = _data.spawnchance;
+        if (_data is not null)
+            Destroy(_data);
+
+        _data = Instantiate(data, transform);
     }
-    
+
+
     public override void Activate()
     {
         if (_spawnChance >= Random.Range(0f, 1f))

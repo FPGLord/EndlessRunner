@@ -7,9 +7,8 @@ public class CollisionTrigger : MonoBehaviour
 
     public UnityEvent OnTrigger => _onTrigger;
 
-
     private void OnTriggerEnter(Collider other)
     {
-        _onTrigger.Invoke();
+        _onTrigger.Invoke();        
     }
 }

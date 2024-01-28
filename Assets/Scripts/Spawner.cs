@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 public class Spawner<TData> : MonoBehaviour
 {
@@ -19,27 +18,61 @@ public class Spawner<TData> : MonoBehaviour
         {
             if (_spawnedViews.Count <= i)
             {
-                View<TData> newPowerUpBoxView = Instantiate(_viewPrefab, transform);
-                _spawnedViews.Add(newPowerUpBoxView);
+                View<TData> newView = Instantiate(_viewPrefab, transform);
+                _spawnedViews.Add(newView);
             }
+
             _spawnedViews[i].ViewData(_data[i]);
         }
 
-        Assert.IsTrue(_spawnedViews.Count <= _spawnPoints.Length,
-            $" Коробок ({_spawnedViews.Count})  больше, чем поинтов ({_spawnPoints.Length}) ");
+        ShuffleSpawnObstacles();
+        SpawnObstacles();
+    }
 
-        ShuffleSpawnPoints();
-
-        for (int i = 0; i < _spawnedViews.Count; i++)
+    private void SpawnObstacles()
+    {
+        if (_spawnPoints.Length > _spawnedViews.Count)
         {
-            _spawnedViews[i].transform.position = _spawnPoints[i].position;
-            _spawnedViews[i].Activate();
+            for (int j = 0; j < _spawnedViews.Count; j++)
+            {
+                _spawnedViews[j].transform.position = _spawnPoints[j].position;
+                _spawnedViews[j].Activate();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < _spawnPoints.Length; i++)
+            {
+                _spawnedViews[i].transform.position = _spawnPoints[i].position;
+                _spawnedViews[i].Activate();
+            }
         }
     }
 
-    private void ShuffleSpawnPoints()
+    private void ShuffleSpawnObstacles()
     {
-        int randomPointIndex = Random.Range(0, _spawnPoints.Length);
-        (_spawnPoints[0], _spawnPoints[randomPointIndex]) = (_spawnPoints[randomPointIndex], _spawnPoints[0]);
+        for (int i = 0; i < _spawnedViews.Count; i++)
+        {
+            int randomObstacleIndex = Random.Range(0, _spawnedViews.Count);
+            (_spawnedViews[i], _spawnedViews[randomObstacleIndex]) =
+                (_spawnedViews[randomObstacleIndex], _spawnedViews[i]);
+        }
     }
+    
+    
+    //
+    // private void ShuffleSpawnPoints()
+    // {
+    //     int randomPointIndex = Random.Range(0, _spawnPoints.Length);
+    //     (_spawnPoints[0], _spawnPoints[randomPointIndex]) = (_spawnPoints[randomPointIndex], _spawnPoints[0]);
+    // }
+    
+    // Assert.IsTrue(_spawnedViews.Count <= _spawnPoints.Length,
+    //     $" Вьюшек ({_spawnedViews.Count})  больше, чем поинтов ({_spawnPoints.Length}) ");
+    
+    // for (int i = 0; i < _spawnedViews.Count; i++)
+    // {
+    //     _spawnedViews[i].transform.position = _spawnPoints[i].position;
+    //     _spawnedViews[i].Activate();
+    // }
 }
