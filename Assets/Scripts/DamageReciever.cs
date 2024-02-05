@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class DamageReciever : ScriptableObject
 {
     [SerializeField] private UnityEvent _OnDeath;
-   
 
     private int _lives = 3;
 

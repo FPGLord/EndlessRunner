@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BinView : View<GameObject>
+public class GameObjectView : View<GameObject>
 {
     [SerializeField] private float _spawnChance;
     private GameObject _data;

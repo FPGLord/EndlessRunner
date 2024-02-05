@@ -18,7 +18,7 @@ public class InputReader : MonoBehaviour
         _inputActionReference.action.performed -= ReadInput;
     }
 
-    void ReadInput(InputAction.CallbackContext callbackContext)
+    private void ReadInput(InputAction.CallbackContext callbackContext)
     {
         _OnInputRead.Invoke();
     }

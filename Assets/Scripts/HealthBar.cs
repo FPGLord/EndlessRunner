@@ -4,21 +4,49 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-  private Image _image;
+    [SerializeField] private Image[] _image;
+    [SerializeField] private float _fillSpeed = 0.04f;
     
-   private void Start()
+    private float _minValue = 0;
+    private float _maxValue = 1.1f;
+
+    private void Start()
     {
-        Fill();
+        SetMinValueHerats();
+        StartCoroutine(FillCoroutine());
     }
 
-    private void Fill()
+
+    private void SetMinValueHerats()
     {
-        
+        foreach (var heart in _image)
+        {
+            heart.fillAmount = _minValue;
+        }
     }
 
-    private IEnumerable FillCoroutine()
+    private IEnumerator FillCoroutine()
     {
-        yield return new WaitForSeconds(1);
+        for (float fillAmount = _minValue; fillAmount <= _maxValue; fillAmount += _fillSpeed)
+        {
+            foreach (var heart in _image)
+            {
+                heart.fillAmount = fillAmount;
+                yield return null;
+            }
+            // _image.fillAmount = fillAmount;
+        }
     }
 
+    public IEnumerator ReleaseCoroutine()
+    {
+        for (float releaseAmount = _maxValue; releaseAmount >= _minValue; releaseAmount -= 0.08f)
+        {
+            foreach (var heart in _image)
+            {
+                heart.fillAmount = releaseAmount;
+                yield return new WaitForSeconds(0.03f);
+            }
+        }
+    }
 }
