@@ -323,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 7668911722698999434}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.81, y: -0.5, z: 0}
+  m_LocalPosition: {x: -10.85, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -496,9 +496,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coinsSpawner: {fileID: 7732941778146548990}
   _boxesSpawner: {fileID: 4254271751466437072}
-  _binsSpawner: {fileID: 2836266907380515283}
-  _barrierSpawner: {fileID: 7523204945117113211}
   _visualTransform: {fileID: 3359902764315158437}
+  _gameObjectsSpawner:
+  - {fileID: 2836266907380515283}
+  - {fileID: 7523204945117113211}
 --- !u!1 &7732941779851001213
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,4 +688,5 @@ MonoBehaviour:
   - {fileID: 167395182564009009, guid: faa8b1d68c0791c4c84199220efbcab8, type: 3}
   - {fileID: 3306223873589600110, guid: e9aa6e4a86ccfcc4aa3a987b04d7e590, type: 3}
   - {fileID: 879367795225648457, guid: 0d75f9686f7c6ca4b848623c54ef0f2c, type: 3}
+  - {fileID: 167395182564009009, guid: 1d6f13af6533f454b99805ee06a7a0bc, type: 3}
   _viewPrefab: {fileID: 3115540533114927105, guid: e3bbc63c2b12d7a4095a7cc258c2ae73, type: 3}

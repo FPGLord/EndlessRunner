@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameObjectView : View<GameObject>
 {
     [SerializeField] private float _spawnChance;
+   
     private GameObject _data;
 
     public override void ViewData(GameObject data)
@@ -16,7 +18,9 @@ public class GameObjectView : View<GameObject>
 
     public override void Activate()
     {
-        if (_spawnChance >= Random.Range(0f, 1f))
+        if (_spawnChance >= Random.value)
             base.Activate();
     }
+    
+    
 }

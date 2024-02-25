@@ -32,9 +32,8 @@ public class HealthBar : MonoBehaviour
             foreach (var heart in _image)
             {
                 heart.fillAmount = fillAmount;
-                yield return null;
+                yield return new WaitForFixedUpdate();
             }
-            // _image.fillAmount = fillAmount;
         }
     }
 

@@ -13,7 +13,6 @@ public class PowerUpBoxView : View<PowerUpBox>
     {
         _data = data;
         _meshRenderer.material = _data.material;
-        _collisionTrigger.OnTrigger.AddListener(InvokeOnCollision);
         _spawnChance = _data.spawnChance;
     }
 
@@ -29,7 +28,13 @@ public class PowerUpBoxView : View<PowerUpBox>
 
     public override void Activate()
     {
-        if (_spawnChance >= Random.Range(0f, 1f))
+        if (Random.value < _spawnChance)
+        {
             base.Activate();
+            _collisionTrigger.OnTrigger.AddListener(InvokeOnCollision);
+        }
+
+        // if (_spawnChance <= Random.Range(0f, 1f))
+        //     base.Activate();
     }
 }

@@ -183,6 +183,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 311350932}
+        m_TargetAssemblyTypeName: AnimatorParameterChanger, Assembly-CSharp
+        m_MethodName: ChangeParameter
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &205125862
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +358,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 311350932}
+        m_TargetAssemblyTypeName: AnimatorParameterChanger, Assembly-CSharp
+        m_MethodName: ChangeParameter
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &303577459
 Animator:
   serializedVersion: 5
@@ -377,6 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 311350931}
   - component: {fileID: 303577459}
+  - component: {fileID: 311350932}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -400,6 +425,20 @@ Transform:
   - {fileID: 1386988006}
   m_Father: {fileID: 5696564854981953151}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &311350932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310987443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e56259083782e24fb23ce19ec4ede77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameterName: RunSpeed
+  _animator: {fileID: 303577459}
 --- !u!1 &478885669
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +524,19 @@ MonoBehaviour:
   globalEvent: {fileID: 11400000, guid: 805873a040d2f954ca657ee8d7595735, type: 2}
   _OnInvoke:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6113087873059809226, guid: d1d9f2affbda29340afde5b7481f7477, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Death
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +703,66 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &727310760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 727310761}
+  - component: {fileID: 727310762}
+  m_Layer: 8
+  m_Name: SlideInputReader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &727310761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727310760}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5696564854981953151}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &727310762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727310760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cc6480c54ae8642a5166c4ed18ea2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputActionReference: {fileID: -1499991266469578334, guid: 810374f782c68e8468255f5cbb9d50a7, type: 3}
+  _OnInputRead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 303577459}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Slide
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &780811995
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,6 +850,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -833,6 +945,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 5696564854981953155}
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82fd0f1a9561764bb091dc19e359820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &980742679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,9 +1444,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coinsSpawner: {fileID: 0}
   _boxesSpawner: {fileID: 0}
-  _binsSpawner: {fileID: 0}
-  _barrierSpawner: {fileID: 0}
   _visualTransform: {fileID: 0}
+  _gameObjectsSpawner: []
 --- !u!114 &1408263079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,6 +1552,50 @@ MonoBehaviour:
           m_StringArgument: Death
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1655000898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655000900}
+  - component: {fileID: 1655000899}
+  m_Layer: 0
+  m_Name: ConsoleWriter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1655000899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655000898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f39487b7c240754fb82eb9b4edc42fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1655000900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655000898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -38.16721, y: 2.130938, z: 0.75886524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1675771275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,7 +1727,7 @@ MonoBehaviour:
   - {fileID: 1061143945}
   - {fileID: 780811998}
   - {fileID: 1675771278}
-  _fillSpeed: 0.01
+  _fillSpeed: 0.07
 --- !u!222 &1793284953
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1919,19 +2086,7 @@ MonoBehaviour:
     m_ActionId: 7f55c48e-0345-4822-ae42-d98fcb5b6536
     m_ActionName: Default/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 303577459}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Slide
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 86447379-52e1-49af-b8b5-4f9c15783ed6
     m_ActionName: Default/Slide[/Keyboard/s]
   m_NeverAutoSwitchControlSchemes: 0
@@ -1954,6 +2109,7 @@ Transform:
   m_Children:
   - {fileID: 311350931}
   - {fileID: 1013400200}
+  - {fileID: 727310761}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5696564854981953155
@@ -1990,3 +2146,4 @@ SceneRoots:
   - {fileID: 1885616624}
   - {fileID: 980742681}
   - {fileID: 478885670}
+  - {fileID: 1655000900}

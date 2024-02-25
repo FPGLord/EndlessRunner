@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3039947064747550117}
   - component: {fileID: 8543805752896930050}
   - component: {fileID: 6629526624470108173}
+  - component: {fileID: 4589372768514925975}
   m_Layer: 3
   m_Name: BinView
   m_TagString: Untagged
@@ -123,9 +124,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
+      - m_Target: {fileID: 4589372768514925975}
+        m_TargetAssemblyTypeName: ChildAnimatorTriggerSetter, Assembly-CSharp
+        m_MethodName: SetAnimatorTrigger
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -135,3 +136,15 @@ MonoBehaviour:
           m_StringArgument: Death
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4589372768514925975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6113087873067193354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78288f41d2a259843ac6ac15e1352f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

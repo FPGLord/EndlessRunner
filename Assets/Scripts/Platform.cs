@@ -6,11 +6,8 @@ public class Platform : MonoBehaviour
 {
     [SerializeField] private CoinsSpawner _coinsSpawner;
     [SerializeField] private Spawner<PowerUpBox> _boxesSpawner;
-    [SerializeField] private Spawner<GameObject> _binsSpawner;
-    [SerializeField] private Spawner<GameObject> _barrierSpawner;
-    
     [SerializeField] private Transform _visualTransform;
-    
+    [SerializeField] private Spawner<GameObject>[] _gameObjectsSpawner;
 
     public float positionX => transform.position.x;
     public float length => _visualTransform.localScale.x;
@@ -23,9 +20,12 @@ public class Platform : MonoBehaviour
 
     public void Initialize()
     {
-        _binsSpawner.Spawn();
+        foreach (var items in _gameObjectsSpawner)
+        {
+            items.Spawn();
+        }
+
         _boxesSpawner.Spawn();
         _coinsSpawner.SpawnCoins();
-        _barrierSpawner.Spawn();
     }
 }

@@ -11,10 +11,10 @@ public class Conveyer : MonoBehaviour
     [SerializeField] private UnityEvent _OnDeathInvoke;
 
     private Platform[] _platforms;
-    private float _animationSpeed = 0.5f;
     private int _backMoveDelta = 9;
     private int _platformsSpawnPositionX = 40;
     private int _speedChangeValue = 10;
+    
 
 
     private void Start()
@@ -50,9 +50,6 @@ public class Conveyer : MonoBehaviour
             _platforms[i] = newPlatform;
             _platforms[i].Initialize();
         }
-            // Platform newPlatform = Instantiate(_platformPrefab,
-            //     new Vector3(_platformPrefab.positionX - _platformPrefab.length, 0, 0), Quaternion.identity);
-            //_platformPrefab = newPlatform;
     }
 
     private void ShiftPlatform(Platform platform)
@@ -70,25 +67,25 @@ public class Conveyer : MonoBehaviour
             _OnCollisionObstacle.Invoke();
         }
     }
-
-    public void SpeedUp()
-    {
-        _moveSpeed += _speedChangeValue;
-        _animator.speed += _animationSpeed;
-    }
-
-    public void SpeedDown()
-    {
-        if (_moveSpeed > _speedChangeValue)
-        {
-            _moveSpeed -= _speedChangeValue;
-            _animator.speed -= _animationSpeed;
-        }
-    }
-
     public void ConveyerStop()
     {
         _OnDeathInvoke.Invoke();
         _moveSpeed = 0;
     }
+
+    public void SpeedUp()
+    {
+        _moveSpeed += _speedChangeValue;
+        print($"SpeedUp - Frame {Time.frameCount}");
+    }
+    
+    public void SpeedDown()
+    {
+        print($"SpeedDown - Frame {Time.frameCount}");
+        if (_moveSpeed > _speedChangeValue)
+        {
+            _moveSpeed -= _speedChangeValue;
+        }
+    }
+
 }
