@@ -10,8 +10,19 @@ public class MovementController : MonoBehaviour
     [SerializeField] private LayerMask _groundLayers;
     [SerializeField] private UnityEvent _OnJump;
     private Player _player;
+    private CapsuleCollider _capsuleCollider;
 
     float _inputMove;
+
+    private void Start()
+    {
+        _capsuleCollider = GetComponent<CapsuleCollider>();
+    }
+
+    private void Update()
+    {
+       Slide();
+    }
 
     public IEnumerator JumpCoroutine()
     {
@@ -41,5 +52,21 @@ public class MovementController : MonoBehaviour
 
         StartCoroutine(JumpCoroutine());
         _OnJump.Invoke();
+    }
+
+    public IEnumerator SlideCoroutine()
+    {
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            yield return new WaitForSeconds(0.75f);
+            _capsuleCollider.direction = 1;
+        }
+    }
+    
+    public void Slide()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+            _capsuleCollider.direction = 2;
+        StartCoroutine(SlideCoroutine());
     }
 }

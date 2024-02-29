@@ -6,7 +6,7 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Image[] _image;
     [SerializeField] private float _fillSpeed = 0.04f;
-    
+
     private float _minValue = 0;
     private float _maxValue = 1.1f;
 
@@ -15,7 +15,6 @@ public class HealthBar : MonoBehaviour
         SetMinValueHerats();
         StartCoroutine(FillCoroutine());
     }
-
 
     private void SetMinValueHerats()
     {
@@ -37,14 +36,14 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    public IEnumerator ReleaseCoroutine()
+    public void TakerLives()
     {
-        for (float releaseAmount = _maxValue; releaseAmount >= _minValue; releaseAmount -= 0.08f)
+        for (int i = 0; i < _image.Length; i++)
         {
-            foreach (var heart in _image)
+            if (_image[i].fillAmount > 0)
             {
-                heart.fillAmount = releaseAmount;
-                yield return new WaitForSeconds(0.03f);
+                _image[i].fillAmount = 0;
+                return;
             }
         }
     }
