@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51637dd6362ca54b85ea8daa80e941f, type: 3}
   m_Name: BaseRacoon
   m_EditorClassIdentifier: 
+  _mesh: {fileID: 4300000, guid: 9f32403f373f28545bb033b44925e201, type: 3}
+  _material: {fileID: 2100000, guid: fefa0546547167848be43384af1c0d43, type: 2}
   _avatar: {fileID: 9000000, guid: 9f32403f373f28545bb033b44925e201, type: 3}

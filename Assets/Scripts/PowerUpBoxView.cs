@@ -33,8 +33,5 @@ public class PowerUpBoxView : View<PowerUpBox>
             base.Activate();
             _collisionTrigger.OnTrigger.AddListener(InvokeOnCollision);
         }
-
-        // if (_spawnChance <= Random.Range(0f, 1f))
-        //     base.Activate();
     }
 }

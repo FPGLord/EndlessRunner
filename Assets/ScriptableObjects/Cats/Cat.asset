@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51637dd6362ca54b85ea8daa80e941f, type: 3}
   m_Name: Cat
   m_EditorClassIdentifier: 
+  _mesh: {fileID: 4300004, guid: 2b755775ae966024fab169f5ae2e95d6, type: 3}
+  _material: {fileID: 2100000, guid: 032f4bca0a7241442a9244e0c2a27a3d, type: 2}
   _avatar: {fileID: 9000000, guid: 2b755775ae966024fab169f5ae2e95d6, type: 3}

@@ -66,7 +66,7 @@ public class MovementController : MonoBehaviour
     public void Slide()
     {
         if (Input.GetKeyDown(KeyCode.S))
-            _capsuleCollider.direction = 2;
+            _capsuleCollider.direction = 0;
         StartCoroutine(SlideCoroutine());
     }
 }
