@@ -155,8 +155,6 @@ MonoBehaviour:
   _viewPrefab: {fileID: 1900743539}
   _selectedCharacter: {fileID: 11400000, guid: 122f1bbba2907fe408c9b1c54a6790e0, type: 2}
   _data:
-  - {fileID: 11400000, guid: 13f5cd5d0a371614c8dd1afd3e09ac3f, type: 2}
-  - {fileID: 11400000, guid: 459f7650c1158eb4a9436c13d6ae2c78, type: 2}
   - {fileID: 11400000, guid: 32878a66565e97844a69d9b4c2868daf, type: 2}
   - {fileID: 11400000, guid: bb5150580c070124b9ec7d4e4af3ff29, type: 2}
 --- !u!4 &56448558
@@ -700,7 +698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character View
+  m_text: Select Clothes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -990,7 +988,7 @@ GameObject:
   - component: {fileID: 1448211442}
   - component: {fileID: 1448211441}
   m_Layer: 0
-  m_Name: CharacterMeshSelector
+  m_Name: CharacterClothesSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1014,6 +1012,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b5e542a1868ecca47873c6c76251f84b, type: 2}
   - {fileID: 11400000, guid: 918524f0d730fe149a89552d6f4a41e3, type: 2}
   - {fileID: 11400000, guid: 0c4539ceada35244aa969ccdd5231a04, type: 2}
+  - {fileID: 11400000, guid: 022e0c7e1eb1ab5428a1e85a440e7ae0, type: 2}
 --- !u!4 &1448211442
 Transform:
   m_ObjectHideFlags: 0
@@ -1309,7 +1308,7 @@ GameObject:
   - component: {fileID: 1718342827}
   - component: {fileID: 1718342826}
   m_Layer: 5
-  m_Name: CharacterView
+  m_Name: SelectClothes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1544,7 +1543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 1900743538}
   _animator: {fileID: 838758756}
-  _data: {fileID: 11400000, guid: 13f5cd5d0a371614c8dd1afd3e09ac3f, type: 2}
+  _data: {fileID: 11400000, guid: 32878a66565e97844a69d9b4c2868daf, type: 2}
 --- !u!4 &1900743540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2136384186557444852, guid: ef9f471ae026bfc4fb54e03fc4fd1850, type: 3}
@@ -1562,7 +1561,7 @@ GameObject:
   - component: {fileID: 1919858266}
   - component: {fileID: 1919858267}
   m_Layer: 0
-  m_Name: CharacterMesh
+  m_Name: CharacterClothes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

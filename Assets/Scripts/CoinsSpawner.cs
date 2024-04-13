@@ -45,5 +45,6 @@ public class CoinsSpawner : MonoBehaviour
             coins.transform.SetParent(_platform);
             coins.SetActive(true);
         }
+
     }
 }

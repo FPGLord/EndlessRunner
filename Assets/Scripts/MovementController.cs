@@ -5,15 +5,16 @@ using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
 {
-    [SerializeField] private int _step = 2;
+    //[SerializeField] private int _step = 2;
     [SerializeField] private float _jumpForce = 2;
+    [SerializeField] private float _moveSpeed = 2.5f;
     [SerializeField] private LayerMask _groundLayers;
     [SerializeField] private UnityEvent _OnJump;
     private Player _player;
     private CapsuleCollider _capsuleCollider;
-
-    float _inputMove;
-
+    private int _targetTrack;
+    private float _inputMove;
+    private float _moveResult;
     private void Start()
     {
         _capsuleCollider = GetComponent<CapsuleCollider>();
@@ -21,10 +22,33 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-       Slide();
+        Slide();
+        SmoothMove();
     }
 
-    public IEnumerator JumpCoroutine()
+    private void SmoothMove()
+    {
+        var currentPosition = transform.position.z;
+        var moveDirection = (currentPosition - _targetTrack) * -1;
+        _moveResult = Mathf.Sign(moveDirection);
+       transform.Translate(0, 0,  _moveResult * _moveSpeed * Time.deltaTime);
+    }
+
+    public IEnumerator RightMoveCoroutine()
+    {
+        if (Mathf.Approximately(_inputMove, 1))
+            transform.Translate(0, 0, _targetTrack * Time.deltaTime);
+        yield break;
+    }
+
+    public IEnumerator LeftMoveCoroutine()
+    {
+        if (Mathf.Approximately(_inputMove, -1))
+            transform.Translate(0, 0, _targetTrack * Time.deltaTime);
+        yield break;
+    }
+
+    private IEnumerator JumpCoroutine()
     {
         // Debug.Log("Jump" + Time.frameCount);
         transform.Translate(0, _jumpForce, 0);
@@ -34,18 +58,19 @@ public class MovementController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext key)
     {
-        //Debug.Log("Move " + key.ReadValue<float>());
         _inputMove = key.ReadValue<float>();
-        float currentPosition = transform.position.z;
-        if (_inputMove == 1 && currentPosition != 2)
-            transform.Translate(0, 0, _step);
-        if (_inputMove == -1 && currentPosition != -2)
-            transform.Translate(0, 0, -_step);
+
+        if (Mathf.Approximately(_inputMove, 1) && _targetTrack == 2)
+            return;
+        if (Mathf.Approximately(_inputMove, -1) && _targetTrack == -2)
+            return;
+
+        _targetTrack += (int)_inputMove * 2;
     }
 
     public void Jump()
     {
-        bool isOnGround = Physics.Raycast(transform.position, Vector3.down, 1.47f, _groundLayers);
+        var isOnGround = Physics.Raycast(transform.position, Vector3.down, 1.47f, _groundLayers);
 
         if (!isOnGround)
             return;
@@ -54,16 +79,14 @@ public class MovementController : MonoBehaviour
         _OnJump.Invoke();
     }
 
-    public IEnumerator SlideCoroutine()
+    private IEnumerator SlideCoroutine()
     {
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            yield return new WaitForSeconds(0.75f);
-            _capsuleCollider.direction = 1;
-        }
+        if (!Input.GetKeyUp(KeyCode.S)) yield break;
+        yield return new WaitForSeconds(0.75f);
+        _capsuleCollider.direction = 1;
     }
-    
-    public void Slide()
+
+    private void Slide()
     {
         if (Input.GetKeyDown(KeyCode.S))
             _capsuleCollider.direction = 0;

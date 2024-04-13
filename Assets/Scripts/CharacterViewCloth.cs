@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class CharacterViewMesh : MonoBehaviour
+public class CharacterViewCloth : MonoBehaviour
 {
     [SerializeField] private SkinnedMeshRenderer _renderer;
     [SerializeField] private CharacterData _data;
@@ -9,10 +8,10 @@ public class CharacterViewMesh : MonoBehaviour
 
     private void Start()
     {
-        ViewMechCaracter(_data);
+        ViewClothCaracter(_data);
     }
 
-    public void ViewMechCaracter(CharacterData data)
+    public void ViewClothCaracter(CharacterData data)
     {
         _data = data;
         _renderer.material = _data.material;

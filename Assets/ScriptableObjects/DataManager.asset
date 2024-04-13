@@ -13,8 +13,5 @@ MonoBehaviour:
   m_Name: DataManager
   m_EditorClassIdentifier: 
   _data:
-  - {fileID: 11400000, guid: 13f5cd5d0a371614c8dd1afd3e09ac3f, type: 2}
-  - {fileID: 11400000, guid: 459f7650c1158eb4a9436c13d6ae2c78, type: 2}
   - {fileID: 11400000, guid: 32878a66565e97844a69d9b4c2868daf, type: 2}
   - {fileID: 11400000, guid: bb5150580c070124b9ec7d4e4af3ff29, type: 2}
-  - {fileID: 11400000, guid: 122f1bbba2907fe408c9b1c54a6790e0, type: 2}

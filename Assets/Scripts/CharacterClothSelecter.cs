@@ -1,10 +1,11 @@
 
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class CharacterMeshSelecter : MonoBehaviour
+public class CharacterClothSelecter : MonoBehaviour
 {
     [SerializeField] private CharacterData _selectedCharacter;
-    [SerializeField] private CharacterViewMesh _selectedMesh;
+    [FormerlySerializedAs("_selectedMesh")] [SerializeField] private CharacterViewCloth selectedCloth;
     [SerializeField] private CharacterData[] _data;
 
     private int _index;
@@ -13,7 +14,7 @@ public class CharacterMeshSelecter : MonoBehaviour
     {
         if (_index < _data.Length)
         {            
-            _selectedMesh.ViewMechCaracter(_data[_index]);
+            selectedCloth.ViewClothCaracter(_data[_index]);
             _selectedCharacter.LoadData(_data[_index]);
             _index++;
         }

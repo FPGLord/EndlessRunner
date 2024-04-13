@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,20 +6,21 @@ public class CharacterSelector : MonoBehaviour
 {
     [SerializeField] private CharacterView _viewPrefab;
     [SerializeField] private CharacterData _selectedCharacter;
-   // [SerializeField] private DataManager[] _data;
-
-    
     [SerializeField] private CharacterData[] _data;
 
+    private void Start()
+    {
+        _selectedCharacter.LoadData(_data[0]);
+    }
 
     private int _index;
 
     public void ChooseNextCharacter()
     {
         if (_index < _data.Length)
-        {            
-             _viewPrefab.ViewCat(_data[_index]);
-             _selectedCharacter.LoadData(_data[_index]);
+        {
+            _viewPrefab.ViewCat(_data[_index]);
+            _selectedCharacter.LoadData(_data[_index]);
             _index++;
         }
 
@@ -37,7 +39,7 @@ public class CharacterSelector : MonoBehaviour
         else
             _index = _data.Length - 1;
     }
-    
+
     public void LoadCharacter()
     {
         SceneManager.LoadScene(0);
