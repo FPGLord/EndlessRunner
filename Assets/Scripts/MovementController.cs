@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
 {
-    //[SerializeField] private int _step = 2;
     [SerializeField] private float _jumpForce = 2;
     [SerializeField] private float _moveSpeed = 2.5f;
     [SerializeField] private LayerMask _groundLayers;
@@ -14,7 +13,8 @@ public class MovementController : MonoBehaviour
     private CapsuleCollider _capsuleCollider;
     private int _targetTrack;
     private float _inputMove;
-    private float _moveResult;
+    private Coroutine _smoothMoveCoroutine;
+
     private void Start()
     {
         _capsuleCollider = GetComponent<CapsuleCollider>();
@@ -23,30 +23,14 @@ public class MovementController : MonoBehaviour
     private void Update()
     {
         Slide();
-        SmoothMove();
     }
 
     private void SmoothMove()
     {
-        var currentPosition = transform.position.z;
-        var moveDirection = (currentPosition - _targetTrack) * -1;
-        _moveResult = Mathf.Sign(moveDirection);
-       transform.Translate(0, 0,  _moveResult * _moveSpeed * Time.deltaTime);
+        var newZ = Mathf.MoveTowards(transform.position.z, _targetTrack, _moveSpeed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x, transform.position.y, newZ);
     }
 
-    public IEnumerator RightMoveCoroutine()
-    {
-        if (Mathf.Approximately(_inputMove, 1))
-            transform.Translate(0, 0, _targetTrack * Time.deltaTime);
-        yield break;
-    }
-
-    public IEnumerator LeftMoveCoroutine()
-    {
-        if (Mathf.Approximately(_inputMove, -1))
-            transform.Translate(0, 0, _targetTrack * Time.deltaTime);
-        yield break;
-    }
 
     private IEnumerator JumpCoroutine()
     {
@@ -62,10 +46,23 @@ public class MovementController : MonoBehaviour
 
         if (Mathf.Approximately(_inputMove, 1) && _targetTrack == 2)
             return;
+
         if (Mathf.Approximately(_inputMove, -1) && _targetTrack == -2)
             return;
 
         _targetTrack += (int)_inputMove * 2;
+
+        _smoothMoveCoroutine ??= StartCoroutine(SmoothMoveCoroutine());
+    }
+
+    private IEnumerator SmoothMoveCoroutine()
+    {
+        while (_targetTrack != transform.position.z)
+        {
+            SmoothMove();
+            yield return null;
+        }
+        _smoothMoveCoroutine = null;
     }
 
     public void Jump()
