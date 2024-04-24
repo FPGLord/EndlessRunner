@@ -27,10 +27,9 @@ public class MovementController : MonoBehaviour
 
     private void SmoothMove()
     {
-        var newZ = Mathf.MoveTowards(transform.position.z, _targetTrack, _moveSpeed * Time.deltaTime);
-        transform.position = new Vector3(transform.position.x, transform.position.y, newZ);
+        var newZ = transform.GetMoveTowardsZ(_targetTrack,_moveSpeed * Time.deltaTime);
+        transform.SetPositionZ(newZ);
     }
-
 
     private IEnumerator JumpCoroutine()
     {
