@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,12 +10,14 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float _moveSpeed = 2.5f;
     [SerializeField] private LayerMask _groundLayers;
     [SerializeField] private UnityEvent _OnJump;
+    [SerializeField] private AnimationCurve _curve;
+
     private Player _player;
     private CapsuleCollider _capsuleCollider;
     private int _targetTrack;
     private float _inputMove;
-    private Coroutine _smoothMoveCoroutine;
-
+    private Tweener _zMover;
+ 
     private void Start()
     {
         _capsuleCollider = GetComponent<CapsuleCollider>();
@@ -23,12 +26,6 @@ public class MovementController : MonoBehaviour
     private void Update()
     {
         Slide();
-    }
-
-    private void SmoothMove()
-    {
-        var newZ = transform.GetMoveTowardsZ(_targetTrack,_moveSpeed * Time.deltaTime);
-        transform.SetPositionZ(newZ);
     }
 
     private IEnumerator JumpCoroutine()
@@ -51,18 +48,13 @@ public class MovementController : MonoBehaviour
 
         _targetTrack += (int)_inputMove * 2;
 
-        _smoothMoveCoroutine ??= StartCoroutine(SmoothMoveCoroutine());
+        if (_zMover != null)
+            _zMover.Kill();
+        var deltaZ = Mathf.Abs(transform.position.z - _targetTrack);
+        _zMover = transform.DOMoveZ(_targetTrack, deltaZ / _moveSpeed)
+            .SetEase(_curve);
     }
 
-    private IEnumerator SmoothMoveCoroutine()
-    {
-        while (_targetTrack != transform.position.z)
-        {
-            SmoothMove();
-            yield return null;
-        }
-        _smoothMoveCoroutine = null;
-    }
 
     public void Jump()
     {
