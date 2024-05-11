@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class StartDelayHandler : MonoBehaviour
 {
-    
     void Start()
     {
         StartCoroutine(RestartGameCoroutine());
     }
-
    
     public IEnumerator RestartGameCoroutine()
     {

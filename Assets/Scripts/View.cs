@@ -13,5 +13,4 @@ public abstract class View<T> : MonoBehaviour
     }
 
    public abstract void ViewData(T data);
-
 }

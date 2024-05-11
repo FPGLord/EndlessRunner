@@ -5,7 +5,7 @@ public class CoinsSpawner : MonoBehaviour
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private Transform[] _spawnCoinsPoints;
     [SerializeField] private Transform _platform;
-    [SerializeField] private int _coinsAmount; // Общее количество монет для спавна
+    [SerializeField] private int _coinsAmount;
 
     private GameObject[] _coins;
     private int _coinsStep = 2;
@@ -34,8 +34,8 @@ public class CoinsSpawner : MonoBehaviour
         if (_coins == null)
             CreateCoins();
 
-        int randomPointIndex = Random.Range(0,3); 
-           
+        int randomPointIndex = Random.Range(0, 3);
+
         Vector3 _spawnCoinsPosition = _spawnCoinsPoints[randomPointIndex].position;
 
         foreach (var coins in _coins)
@@ -45,6 +45,5 @@ public class CoinsSpawner : MonoBehaviour
             coins.transform.SetParent(_platform);
             coins.SetActive(true);
         }
-
     }
 }

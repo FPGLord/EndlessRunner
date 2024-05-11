@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class CharacterData : ScriptableObject
@@ -7,8 +6,6 @@ public class CharacterData : ScriptableObject
     [SerializeField] private Material _material;
     [SerializeField] private Avatar _avatar;
     
-
-
     public Mesh mesh => _mesh;
 
     public Material material => _material;

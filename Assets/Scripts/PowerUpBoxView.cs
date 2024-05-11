@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class PowerUpBoxView : View<PowerUpBox>
 {
     [SerializeField] private float _spawnChance;

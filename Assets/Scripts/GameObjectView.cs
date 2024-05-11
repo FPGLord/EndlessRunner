@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GameObjectView : View<GameObject>
 {
@@ -15,12 +14,9 @@ public class GameObjectView : View<GameObject>
         _data = Instantiate(data, transform);
     }
 
-
     public override void Activate()
     {
         if (_spawnChance >= Random.value)
             base.Activate();
     }
-    
-    
 }

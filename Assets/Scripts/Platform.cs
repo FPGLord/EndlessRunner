@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-
 public class Platform : MonoBehaviour
 {
     [SerializeField] private CoinsSpawner _coinsSpawner;

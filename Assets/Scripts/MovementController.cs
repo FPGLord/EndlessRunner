@@ -17,20 +17,14 @@ public class MovementController : MonoBehaviour
     private int _targetTrack;
     private float _inputMove;
     private Tweener _zMover;
- 
+
     private void Start()
     {
         _capsuleCollider = GetComponent<CapsuleCollider>();
     }
-
-    private void Update()
-    {
-        Slide();
-    }
-
+    
     private IEnumerator JumpCoroutine()
     {
-        // Debug.Log("Jump" + Time.frameCount);
         transform.Translate(0, _jumpForce, 0);
         yield return new WaitForSeconds(0.75f);
         transform.Translate(0, -_jumpForce, 0);
@@ -55,7 +49,6 @@ public class MovementController : MonoBehaviour
             .SetEase(_curve);
     }
 
-
     public void Jump()
     {
         var isOnGround = Physics.Raycast(transform.position, Vector3.down, 1.47f, _groundLayers);
@@ -69,7 +62,6 @@ public class MovementController : MonoBehaviour
 
     private IEnumerator SlideCoroutine()
     {
-        if (!Input.GetKeyUp(KeyCode.S)) yield break;
         yield return new WaitForSeconds(0.75f);
         _capsuleCollider.direction = 1;
     }
@@ -77,7 +69,10 @@ public class MovementController : MonoBehaviour
     private void Slide()
     {
         if (Input.GetKeyDown(KeyCode.S))
+        {
             _capsuleCollider.direction = 0;
-        StartCoroutine(SlideCoroutine());
+            StartCoroutine(SlideCoroutine());
+        }
     }
 }
+

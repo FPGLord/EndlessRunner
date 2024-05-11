@@ -9,22 +9,14 @@ public class Conveyer : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private UnityEvent _OnCollisionObstacle;
     [SerializeField] private UnityEvent _OnDeathInvoke;
-
-   
-    
-    
-    
     
     private Platform[] _platforms;
     private int _backMoveDelta = 9;
     private int _platformsSpawnPositionX = 40;
     private int _speedChangeValue = 10;
     
-
-
     private void Start()
     {
-        
         CreatePlatforms();
     }
 
