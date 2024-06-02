@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class Conveyer : MonoBehaviour
 {
     [SerializeField] private Platform _platformPrefab;
     [SerializeField] private int _platformsAmount;
-    [SerializeField] private float _moveSpeed;
     [SerializeField] private Animator _animator;
     [SerializeField] private UnityEvent _OnCollisionObstacle;
     [SerializeField] private UnityEvent _OnDeathInvoke;
@@ -14,6 +14,8 @@ public class Conveyer : MonoBehaviour
     private int _backMoveDelta = 9;
     private int _platformsSpawnPositionX = 40;
     private int _speedChangeValue = 10;
+    
+    public float moveSpeed;
     
     private void Start()
     {
@@ -29,7 +31,7 @@ public class Conveyer : MonoBehaviour
     {
         foreach (var platform in _platforms)
         {
-            platform.Move(Vector2.right, _moveSpeed * Time.deltaTime);
+            platform.Move(Vector2.right, moveSpeed * Time.deltaTime);
 
             if (platform.positionX >= _platformsSpawnPositionX)
 
@@ -37,6 +39,7 @@ public class Conveyer : MonoBehaviour
         }
     }
 
+    [ContextMenu("Create Platforms")]
     private void CreatePlatforms()
     {
         _platforms = new Platform[_platformsAmount];
@@ -68,21 +71,19 @@ public class Conveyer : MonoBehaviour
     public void ConveyerStop()
     {
         _OnDeathInvoke.Invoke();
-        _moveSpeed = 0;
+        moveSpeed = 0;
     }
 
     public void SpeedUp()
     {
-        _moveSpeed += _speedChangeValue;
-        print($"SpeedUp - Frame {Time.frameCount}");
+        moveSpeed += _speedChangeValue;
     }
     
     public void SpeedDown()
     {
-        print($"SpeedDown - Frame {Time.frameCount}");
-        if (_moveSpeed > _speedChangeValue)
+        if (moveSpeed > _speedChangeValue)
         {
-            _moveSpeed -= _speedChangeValue;
+            moveSpeed -= _speedChangeValue;
         }
     }
 

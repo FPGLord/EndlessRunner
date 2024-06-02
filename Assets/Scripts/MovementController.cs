@@ -22,7 +22,7 @@ public class MovementController : MonoBehaviour
     {
         _capsuleCollider = GetComponent<CapsuleCollider>();
     }
-    
+
     private IEnumerator JumpCoroutine()
     {
         transform.Translate(0, _jumpForce, 0);
@@ -55,24 +55,8 @@ public class MovementController : MonoBehaviour
 
         if (!isOnGround)
             return;
-
+        
         StartCoroutine(JumpCoroutine());
         _OnJump.Invoke();
     }
-
-    private IEnumerator SlideCoroutine()
-    {
-        yield return new WaitForSeconds(0.75f);
-        _capsuleCollider.direction = 1;
-    }
-
-    private void Slide()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _capsuleCollider.direction = 0;
-            StartCoroutine(SlideCoroutine());
-        }
-    }
 }
-
