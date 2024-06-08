@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class AnchorSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] _anchors;
-    [SerializeField] private RandomRotationYSetter randomRotationYSetter;
+
+    [FormerlySerializedAs("randomRotationYSetter")] [SerializeField]
+    private RandomScaleXSetter randomScaleXSetter;
+
     [SerializeField] private AnchorMover _anchorMover;
     [SerializeField] private int _distanceBetweenAnchors;
     private Vector3 _spawnPoint;
 
     private void Awake()
     {
-        _spawnPoint = new Vector3(-90, transform.position.y, transform.position.z);
+        _spawnPoint = new Vector3(-440, transform.position.y, transform.position.z);
     }
 
     private void Update()
@@ -34,7 +38,7 @@ public class AnchorSpawner : MonoBehaviour
         foreach (var anchor in disabledAnchors)
         {
             InizializeAnchor(anchor);
-            yield return new WaitForSeconds(Random.Range(2f,5f));
+            yield return new WaitForSeconds(Random.Range(2f, 5f));
         }
     }
 
@@ -42,14 +46,9 @@ public class AnchorSpawner : MonoBehaviour
     {
         foreach (var anchor in _anchors)
         {
-            _anchorMover.MoveAnchor(anchor.transform);
+            if (anchor.activeInHierarchy)
+                _anchorMover.MoveAnchor(anchor.transform);
         }
-    }
-
-    private void EnableAnchor()
-    {
-        foreach (var anchor in _anchors)
-            InizializeAnchor(anchor);
     }
 
     private void DisableAnchor()
@@ -62,7 +61,7 @@ public class AnchorSpawner : MonoBehaviour
     private void InizializeAnchor(GameObject anchor)
     {
         anchor.SetActive(true);
-        randomRotationYSetter.Set(anchor.transform);
+        randomScaleXSetter.Set(anchor.transform);
         anchor.transform.position = _spawnPoint;
     }
 }

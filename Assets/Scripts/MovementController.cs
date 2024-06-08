@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -49,13 +51,19 @@ public class MovementController : MonoBehaviour
             .SetEase(_curve);
     }
 
+    private void OnDestroy()
+    {
+        if (_zMover != null)
+            _zMover.Kill();
+    }
+
     public void Jump()
     {
         var isOnGround = Physics.Raycast(transform.position, Vector3.down, 1.47f, _groundLayers);
 
         if (!isOnGround)
             return;
-        
+
         StartCoroutine(JumpCoroutine());
         _OnJump.Invoke();
     }
