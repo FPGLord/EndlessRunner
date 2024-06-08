@@ -17,7 +17,7 @@ public class AnchorSpawner : MonoBehaviour
 
     private void Awake()
     {
-        _spawnPoint = new Vector3(-440, transform.position.y, transform.position.z);
+        _spawnPoint = new Vector3(-190, transform.position.y, transform.position.z);
     }
 
     private void Update()
