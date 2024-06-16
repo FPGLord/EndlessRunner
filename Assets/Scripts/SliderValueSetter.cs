@@ -1,18 +1,19 @@
 using UnityEngine;
-using UnityEngine.UI;
+using Slider = UnityEngine.UI.Slider;
 
 public class SliderValueSetter : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-   
-    
+    [SerializeField] private string _key;
+
     private void Start()
     {
-      _slider.value = PlayerPrefs.GetFloat("SliderValue");
+        _slider.value = PlayerPrefs.GetFloat(_key, 0.5f);
     }
-    
-    public void SetValue() 
+
+
+    private void OnDestroy()
     {
-        PlayerPrefs.SetFloat("SliderValue", _slider.value);
+        PlayerPrefs.SetFloat(_key, _slider.value);
     }
 }
